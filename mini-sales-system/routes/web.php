@@ -28,9 +28,9 @@ Route::post('/insert/customer', [CustomerController::class , 'insertcustomer'])-
 //order
 Route::get('/order', [SellController::class , 'order'])->name('order')->middleware('isLoggedIn');
 Route::post('/add/order',[SellController::class,'addOrder'])->name('addOrder');
-Route::get('/cart',[SellController::class,'cart'])->name('cart');
-Route::get('/select/customer/{customer_id}/{customer_name}',[SellController::class,'customerSelect'])->name('customerSelect');
-Route::get('/purchase',[SellController::class,'purchase'])->name('purchase');
+Route::get('/cart',[SellController::class,'cart'])->name('cart')->middleware('isLoggedIn');
+Route::get('/select/customer/{customer_id}/{customer_name}',[SellController::class,'customerSelect'])->name('customerSelect')->middleware('isLoggedIn');
+Route::get('/purchase',[SellController::class,'purchase'])->name('purchase')->middleware('isLoggedIn');
 
 //auth
 Route::get('/login', [AuthController::class , 'login'])->name('login')->middleware('AlreadyLoggedIn');
